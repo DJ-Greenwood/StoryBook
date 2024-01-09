@@ -1,2 +1,4 @@
 # myflaskapp/requirements.txt
 Flask==1.1.2
+pip==23.3.2
+setuptools==49.2.1
