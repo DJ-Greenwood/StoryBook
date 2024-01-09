@@ -1,0 +1,27 @@
+<!-- templates/story_elements.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Story Elements</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Story Elements</h1>
+        {% for category, elements in data.items() %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2>{{ category }}</h2>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        {% for element, description in elements.items() %}
+                            <li><strong>{{ element }}</strong>: {{ description }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
