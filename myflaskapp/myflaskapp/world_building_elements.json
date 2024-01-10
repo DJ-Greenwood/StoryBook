@@ -58,35 +58,34 @@
         "Historical Evolution": "Consider how the geography has shaped the history and development of civilizations within the story. This can include past natural disasters, changes due to human activity, or legendary events tied to specific locations.",
         "Map Creation": "If applicable, creating a map can help both the author and the reader keep track of the geography and understand how it influences the plot and characters."
     },
-    "Magic or Technology": {
-        "Integration with the Environment": {
-            "Description": "The magic or technology should be deeply interwoven with the world's environment. For instance, if the setting is a lush forest, the magic could involve nature and elements, or if it's a futuristic city, the technology could include advanced urban infrastructure systems.",
-            "Influence on Operation": "The environmental features should influence how magic or technology operates. In a desert setting, magic might revolve around controlling sand or water, whereas in a high-tech city, technology could focus on energy efficiency and vertical living spaces."
-        },
-        "Consistency and Rules": {
-            "Establishment of Rules": "Establish clear rules and limitations for how magic or technology works. This prevents them from becoming a catch-all solution to every problem, thus maintaining tension in the story.",
-            "Application Consistency": "Consistency in its application ensures that the reader can understand and anticipate its uses and limitations, which can be critical for plot development and conflict resolution."
-        },
-        "Cultural Influence": {
-            "Integration in Culture": "Magic or technology should be a part of the cultural fabric. It could shape social structures, religious beliefs, and daily life. For example, a society with healing magic might view healthcare differently.",
-            "Social Dynamics": "The development and control of magic or technology can create social hierarchies, conflicts, and power dynamics, adding depth to the narrative."
-        },
-        "Historical Development": {
-            "Evolution Over Time": "Consider how magic or technology has evolved over time in your world. Its history can add depth and realism, showing how it has shaped society and been shaped by it.",
-            "Historical Events": "Historical events, such as magical disasters or technological breakthroughs, can be significant plot points or backstories that enrich the narrative."
-        },
-        "Impact on Characters": {
-            "Effect on Lives": "The magic or technology should directly affect the characters' lives. It can define their professions, hobbies, and daily routines.",
-            "Access and Ability": "Characters might have varying degrees of access or ability, influencing their status and relationships with others."
-        },
-        "Visual and Sensory Descriptions": {
-            "Sensory Imagery": "Describe how magic or technology looks, feels, sounds, and even smells. Vivid sensory details help to create a more immersive and believable world.",
-            "Mood and Tone": "These descriptions can also reflect the mood and tone of different scenes \u2013 for instance, the eerie glow of a spell or the sleek feel of a technological gadget."
-        },
-        "Originality and Creativity": {
-            "Unique Elements": "While it's fine to draw inspiration from existing works, strive for original elements that set your world apart. This could be a unique source of magic or an innovative technological concept.",
-            "Expanding Traditional Tropes": "Think about how you can subvert or expand upon traditional tropes to surprise and engage your readers."
-        }
+    "Magic or Technology Integration with the Environment": {
+        "Description": "The magic or technology should be deeply interwoven with the world's environment. For instance, if the setting is a lush forest, the magic could involve nature and elements, or if it's a futuristic city, the technology could include advanced urban infrastructure systems.",
+        "Influence on Operation": "The environmental features should influence how magic or technology operates. In a desert setting, magic might revolve around controlling sand or water, whereas in a high-tech city, technology could focus on energy efficiency and vertical living spaces."
+    },
+    "Magic or Technology Consistency and Rules": {
+        "Establishment of Rules": "Establish clear rules and limitations for how magic or technology works. This prevents them from becoming a catch-all solution to every problem, thus maintaining tension in the story.",
+        "Application Consistency": "Consistency in its application ensures that the reader can understand and anticipate its uses and limitations, which can be critical for plot development and conflict resolution."
+    },
+    "Magic or Technology Cultural Influence": {
+        "Integration in Culture": "Magic or technology should be a part of the cultural fabric. It could shape social structures, religious beliefs, and daily life. For example, a society with healing magic might view healthcare differently.",
+        "Social Dynamics": "The development and control of magic or technology can create social hierarchies, conflicts, and power dynamics, adding depth to the narrative."
+    },
+    "Magic or Technology Historical Development": {
+        "Evolution Over Time": "Consider how magic or technology has evolved over time in your world. Its history can add depth and realism, showing how it has shaped society and been shaped by it.",
+        "Historical Events": "Historical events, such as magical disasters or technological breakthroughs, can be significant plot points or backstories that enrich the narrative."
+    },
+    "Magic or Technology Impact on Characters": {
+        "Effect on Lives": "The magic or technology should directly affect the characters' lives. It can define their professions, hobbies, and daily routines.",
+        "Access and Ability": "Characters might have varying degrees of access or ability, influencing their status and relationships with others."
+    },
+    "Magic or Technology Visual and Sensory Descriptions": {
+        "Sensory Imagery": "Describe how magic or technology looks, feels, sounds, and even smells. Vivid sensory details help to create a more immersive and believable world.",
+        "Mood and Tone": "These descriptions can also reflect the mood and tone of different scenes \u2013 for instance, the eerie glow of a spell or the sleek feel of a technological gadget."
+    },
+    "Magic or Technology Originality and Creativity": {
+        "Unique Elements": "While it's fine to draw inspiration from existing works, strive for original elements that set your world apart. This could be a unique source of magic or an innovative technological concept.",
+        "Expanding Traditional Tropes": "Think about how you can subvert or expand upon traditional tropes to surprise and engage your readers."
     }
+
 }
 
