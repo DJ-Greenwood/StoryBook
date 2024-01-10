@@ -1,3 +1,5 @@
+myflaskapp/.env
+config.py
 myflaskapp/Scripts/f2py.exe
 myflaskapp/Lib/site-packages/easy_install.py
 myflaskapp/Lib/site-packages/six.py
