@@ -24,6 +24,7 @@ class StoryBotAI:
         client_actor_one (OpenAI): OpenAI client configured with `api_key`.
         client_actor_two (OpenAI): OpenAI client configured with `api_key_two`.
         client_story_teller (OpenAI): OpenAI client for story-telling, configured with `api_key_story_teller`.
+        client_logic (OpenAI): OpenAI client for logic, configured with `api_key_logic`.
         client_dalle (OpenAI): OpenAI client for DALL-E, configured with `api_key_dalle`.
     """
 
@@ -36,6 +37,7 @@ class StoryBotAI:
         self.api_key = os.environ.get("OPENAI_API_KEY")
         self.api_key_two = os.environ.get("OPENAI_API_KEY_TWO")
         self.api_key_story_teller = os.environ.get("OPENAI_API_KEY_STORY_TELLER")
+        self.api_key_logic = os.environ.get("OPENAI_API_KEY_LOGIC")
         self.api_key_dalle = os.environ.get("OPENAI_API_KEY_DALLE")
 
         self.client_actor_one = OpenAI(api_key=self.api_key)
@@ -94,6 +96,52 @@ class StoryBotAI:
     def get_chatgpt_story_teller(self, system_prompt, prompt):
         """
         Get a response from ChatGPT for story-telling based on the provided prompt.
+
+        Args:
+            system_prompt (str): The system prompt to provide context.
+            prompt (str): The user prompt for ChatGPT.
+
+        Returns:
+            str: The response from ChatGPT, or None if an error occurs.
+        """
+        try:
+            response = self.client_story_teller.chat.completions.create(
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": prompt}
+                ],
+                model=self.model
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            print(f"Error in getting response from ChatGPT: {e}")
+            return None
+    
+    def get_chatgpt_story_teller_continuation(self, prompt):
+        """
+        Get a response from ChatGPT for story-telling based on the provided prompt.
+
+        Args:
+            prompt (str): The user prompt for ChatGPT.
+
+        Returns:
+            str: The response from ChatGPT, or None if an error occurs.
+        """
+        try:
+            response = self.client_story_teller.chat.completions.create(
+             messages=[
+                    {"role": "user", "content": prompt}
+                ],
+                model=self.model
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            print(f"Error in getting response from ChatGPT: {e}")
+            return None
+    
+    def get_chatgpt_story_logic(self, system_prompt, prompt):
+        """
+        Get a response from checking the LOGIC of the system.
 
         Args:
             system_prompt (str): The system prompt to provide context.

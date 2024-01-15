@@ -1,129 +1,104 @@
-__version__ = "1.0.0"
-
-import sqlite3
 import json
+import sqlite3
 
-class StoryDatabase:
+class WorldbuildingDatabase:
     """
-    A class to handle SQLite database operations for story data.
+    A class to manage a worldbuilding database, handling the creation of tables,
+    loading data from JSON, and providing CRUD operations.
     """
 
-    def __init__(self, db_file_path):
+    def __init__(self, db_path, data):
         """
-        Initializes the StoryDatabase object with the given database file path.
+        Initialize the database connection and create tables.
+        
+        :param db_path: Path to the SQLite database file.
         """
-        self.db_file_path = db_file_path
+        self.conn = sqlite3.connect(db_path)
+        self.cursor = self.conn.cursor()
+        self.data = data
+        self.table_name = self.get_table_names(data)
+        self.create_database_tables(self.table_name)
+        
 
-    def create_table_from_json(self, json_file_path):
+    def get_table_names(self, data: dict):
         """
-        Creates tables in the database based on the structure defined in a JSON file.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            with open(json_file_path, 'r') as file:
-                data = json.load(file)
-            
-            for category, aspects in data.items():
-                table_name = category.replace(" ", "_").replace("-", "_")
-                cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} (ID INTEGER PRIMARY KEY, Aspect TEXT, Description TEXT)")
-                for aspect in aspects:
-                    cursor.execute(f"INSERT INTO {table_name} (ID, Aspect, Description) VALUES (?, ?, ?)", 
-                                   (aspect['ID'], aspect['Aspect'], aspect['Description']))
+        Get the table names from the JSON data.
 
-            conn.commit()
+        :param data: Data loaded from the JSON file.
+        :return: List of table names.
+        """
+        for key in data:
+            table_name = key
+        return table_name
+  
+    def create_database_tables(self, table_name):
+        """
+        Create tables in the database for different worldbuilding elements.
+        """
+        
+        # Example for 'Plot Elements' table
+        self.conn.execute(f'''
+                CREATE TABLE IF NOT EXISTS {table_name} (
+                    ID INTEGER PRIMARY KEY,
+                    Aspect TEXT,
+                    Description TEXT
+                );
+            ''')
+        
+    def parse_and_insert(self, data, table_name):
+        """
+        Parse the JSON data and insert it into the corresponding tables.
 
-    def insert_data(self, table_name, id, aspect, description):
+        :param data: Data loaded from the JSON file.
         """
-        Inserts a new row into the specified table.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("INSERT INTO {table_name} (ID, Aspect, Description) VALUES (?, ?, ?)", (id, aspect, description))
-            conn.commit()
+        # Example for inserting plot elements
+        for element in data["Master List"]["World building"][f"{table_name}"]:
+            for conflict in element["Conflict"]:
+                self.conn.execute(f'INSERT INTO "{table_name}" (ID, Aspect, Description) VALUES (?, ?, ?)',
+                                  (conflict["ID"], conflict["Aspect"], conflict["Description"]))
+        # ... parsing and inserting for other categories
 
-    def delete_data(self, table_name, id):
-        """
-        Deletes a row from the specified table based on ID.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM {table_name} WHERE ID = ?", (id,))
-            conn.commit()
+        self.conn.commit()
 
-    def update_data(self, table_name, id, aspect, description):
+    def query_data(self, table_name, condition=None):
         """
-        Updates a row in the specified table based on ID.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("UPDATE {table_name} SET Aspect = ?, Description = ? WHERE ID = ?", (aspect, description, id))
-            conn.commit()
+        Query data from a specific table with an optional condition.
 
-    def get_table_names(self):
+        :param table: Name of the table to query.
+        :param condition: Optional SQL condition for querying.
+        :return: Query results.
         """
-        Retrieves the names of all tables in the database.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-            tables = cursor.fetchall()
-            return [table[0] for table in tables]
+        query = f"SELECT * FROM {table_name}"
+        if condition:
+            query += f" WHERE {condition}"
+        self.cursor.execute(query)
+        return self.cursor.fetchall()
 
-    def get_column_names(self, table_name):
+    def update_data(self, table_name, set_statement, condition):
         """
-        Retrieves the column names of the specified table.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute(f"PRAGMA table_info({table_name});")
-            columns = cursor.fetchall()
-            return [column[1] for column in columns]
+        Update data in a specific table.
 
-    def drop_table(self, table_name):
+        :param table: Name of the table to update.
+        :param set_statement: SQL SET statement.
+        :param condition: SQL condition for updating.
         """
-        Drops the specified table from the database.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute(f"DROP TABLE IF EXISTS {table_name}")
-            conn.commit()
+        query = f"UPDATE {table_name} SET {set_statement} WHERE {condition}"
+        self.cursor.execute(query)
+        self.conn.commit()
 
-    def search_data(self, table_name, search_query):
+    def delete_data(self, table_name, condition):
         """
-        Searches for rows in the specified table that match the search query in their description.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM {table_name} WHERE Description LIKE ?", ('%' + search_query + '%',))
-            results = cursor.fetchall()
-            return results
+        Delete data from a specific table based on a condition.
 
-    def get_all_data(self, table_name):
+        :param table: Name of the table to delete from.
+        :param condition: SQL condition for deletion.
         """
-        Retrieves all rows from the specified table.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM {table_name}")
-            results = cursor.fetchall()
-            return results
-    
-    def close_database(self):
-        """
-        Closes the database connection.
-        """
-        with sqlite3.connect(self.db_file_path) as conn:
-            conn.close()
+        query = f"DELETE FROM {table_name} WHERE {condition}"
+        self.cursor.execute(query)
+        self.conn.commit()
 
-# Example usage:
-# db = StoryDatabase('your_database.db')    
-# db.create_table_from_json('plot_elements.json')       
-# db.insert_data('Plot', 1, 'Beginning', 'The beginning of the story.')
-# db.delete_data('Plot', 1)
-# db.update_data('Plot', 1, 'Beginning', 'The beginning of the story.')
-# print(db.get_table_names())
-# print(db.get_column_names('Plot'))
-# db.drop_table('Plot')
-# print(db.search_data('Plot', 'story'))
-# print(db.get_all_data('Plot'))
-# db.close_database()
+    def close(self):
+        """
+        Close the database connection.
+        """
+        self.conn.close()
