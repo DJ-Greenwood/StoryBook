@@ -1,0 +1,147 @@
+{
+    "type": "object",
+    "description": [
+        {
+            "Backstory and Motivation": {
+                "type": "object",
+                "Ascpect and description": [
+                    {
+                        "ID": 1,
+                        "Aspect": "Detailed Background",
+                        "Description": "Dive deeper into a character's past, exploring their upbringing, significant life events, and the cultural or social environment that influenced them."
+                    },
+                    {
+                        "ID": 2,
+                        "Aspect": "Personal Drives and Desires",
+                        "Description": "Clarify what each character wants or strives for, whether it's personal goals, ideals, fears, or ambitions."
+                    },
+                    {
+                        "ID": 3,
+                        "Aspect": "Influential Relationships",
+                        "Description": "Detail important relationships that have shaped the character, such as mentors, rivals, loved ones, or adversaries."
+                    },
+                    {
+                        "ID": 4,
+                        "Aspect": "Foundational Experiences",
+                        "Description": "Discuss key childhood or early life experiences that significantly shaped the character's worldview and personality."
+                    },
+                    {
+                        "ID": 5,
+                        "Aspect": "Cultural Influences",
+                        "Description": "Explore how the character's cultural background and societal norms influence their motivations and actions."
+                    },
+                    {
+                        "ID": 6,
+                        "Aspect": "Formative Traumas",
+                        "Description": "Include impactful traumatic events and how they affect the character's fears, motivations, and behavior."
+                    }
+                ]
+            },
+            "Character arces": {
+                "type": "object",
+                "Ascpect and description": [
+                    {
+                        "ID": 7,
+                        "Aspect": "Transformation Journey",
+                        "Description": "Map out the character's journey of change, showing how they evolve in response to story events and challenges."
+                    },
+                    {
+                        "ID": 8,
+                        "Aspect": "Milestones of Growth",
+                        "Description": "Identify key moments or events in the story that act as catalysts for the character's growth or change."
+                    },
+                    {
+                        "ID": 9,
+                        "Aspect": "Resolution of Internal Conflicts",
+                        "Description": "Show how characters resolve their internal struggles and conflicts as part of their arc."
+                    },
+                    {
+                        "ID": 10,
+                        "Aspect": "Evolution of Beliefs",
+                        "Description": "Trace how the character's beliefs and values change throughout the story."
+                    },
+                    {
+                        "ID": 11,
+                        "Aspect": "Challenges Overcome",
+                        "Description": "Describe the difficulties the character faces and how overcoming these challenges contributes to their growth."
+                    },
+                    {
+                        "ID": 12,
+                        "Aspect": "Epiphanies and Realizations",
+                        "Description": "Highlight moments of realization that lead to significant changes in the character's perspective or behavior."
+                    }
+                ]
+            },
+            "Consistency and Complexity": {
+                "type": "object",
+                "Ascpect and description": [
+                    {
+                        "ID": 13,
+                        "Aspect": "Behavioral Patterns",
+                        "Description": "Establish patterns in the character's behavior that align with their personality and history, ensuring they act believably within those parameters."
+                    },
+                    {
+                        "ID": 14,
+                        "Aspect": "Multidimensional Traits",
+                        "Description": "Develop layers to the character, such as conflicting desires, hidden fears, or unexpected strengths, to create depth."
+                    },
+                    {
+                        "ID": 15,
+                        "Aspect": "Dynamic Reactions",
+                        "Description": "Illustrate how the character reacts differently to various situations, showing a range of emotions and responses."
+                    },
+                    {
+                        "ID": 16,
+                        "Aspect": "Inconsistent Behaviors",
+                        "Description": "Acknowledge and explain instances where the character acts out of character, providing depth and complexity."
+                    },
+                    {
+                        "ID": 17,
+                        "Aspect": "Internal Conflicts",
+                        "Description": "Delve into the character's internal battles, such as moral dilemmas or emotional struggles."
+                    },
+                    {
+                        "ID": 18,
+                        "Aspect": "Change Over Time",
+                        "Description": "Show how the character's responses and behaviors evolve over the course of the story."
+                    }
+                ]
+            },
+            "Relatability": {
+                "type": "object",
+                "Ascpect and description": [
+                    {
+                        "ID": 19,
+                        "Aspect": "Universal Themes and Emotions",
+                        "Description": "Incorporate universal themes or emotions in the character's journey, such as love, loss, ambition, or redemption."
+                    },
+                    {
+                        "ID": 20,
+                        "Aspect": "Flaws and Vulnerabilities",
+                        "Description": "Give characters relatable flaws and vulnerabilities, making them more human and approachable."
+                    },
+                    {
+                        "ID": 21,
+                        "Aspect": "Aspirational Qualities",
+                        "Description": "Include aspirational or admirable qualities in characters, allowing readers to look up to them or draw inspiration from them."
+                    },
+                    {
+                        "ID": 22,
+                        "Aspect": "Connections to Other Characters",
+                        "Description": "Detail how relationships with other characters make them more relatable and add depth to their personality."
+                    },
+                    {
+                        "ID": 23,
+                        "Aspect": "Realistic Goals and Struggles",
+                        "Description": "Include realistic and relatable goals, aspirations, and struggles that readers can empathize with."
+                    },
+                    {
+                        "ID": 24,
+                        "Aspect": "Humor and Wit",
+                        "Description": "Integrate moments of humor or wit to make the character more endearing and relatable to the audience."
+                    }
+                ]
+            }
+        }
+    ]
+}

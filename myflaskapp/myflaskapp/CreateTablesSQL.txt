@@ -1,0 +1,50 @@
+-- database: c:\Users\Denzi\Desktop\StoryBook\myflaskapp\Include\NewJson\plot_elements.db
+CREATE TABLE "character_development" (
+            ID INTEGER PRIMARY KEY, Aspect TEXT,
+            Description TEXT
+        );
+
+CREATE TABLE "plot_elements" (
+            ID INTEGER PRIMARY KEY, Aspect TEXT,
+            Description TEXT
+        );
+
+CREATE TABLE "story_elements" (
+            ID INTEGER PRIMARY KEY, Aspect TEXT,
+            Description TEXT
+        );
+
+CREATE TABLE "world_building_elements" (
+            ID INTEGER PRIMARY KEY, Aspect TEXT,
+            Description TEXT
+        );
+
+
+CREATE TABLE combined_elements AS
+SELECT ID, Aspect, Description, 'plot_elements' AS SourceTable
+FROM plot_elements
+UNION ALL
+SELECT ID, Aspect, Description, 'character_development' AS SourceTable
+FROM character_development
+UNION ALL
+SELECT ID, Aspect, Description, 'story_elements' AS SourceTable
+FROM story_elements
+UNION ALL
+SELECT ID, Aspect, Description, 'world_building_elements' AS SourceTable
+FROM world_building_elements;
+
+
+
+CREATE TABLE 'prompt_creation_tracking' (
+    'ID'	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    'SourceTable'	TEXT NOT NULL,
+    'Aspect'	TEXT NOT NULL,
+    'Description'	TEXT NOT NULL,
+    'Prompt'	TEXT,
+    'Response'	TEXT);
+
+CREATE TABLE 'conversation_prompt_responses' (
+    'ID'	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+    'Conversation'	TEXT NOT NULL,
+    'Prompt'	TEXT NOT NULL,
+    'Responce'	TEXT NOT NULL);

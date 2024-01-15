@@ -1,0 +1,38 @@
+{
+    "Informtation prompts": {
+      "informational": "These prompts seek specific information or facts.",
+      "opinion_based": "These ask for an opinion or subjective response.",
+      "creative": "Used to generate creative content like stories, poems, or ideas.",
+      "instructional": "These ask how to do something or seek step-by-step guidance.",
+      "problem_solving": "These are focused on solving a problem or offering solutions.",
+      "reflective": "Designed to encourage introspection or reflection on a topic.",
+      "hypothetical": "These involve imaginary scenarios to explore possible outcomes.",
+      "historical_contextual": "Asking about historical events or background information.",
+      "technical_scientific": "These are specific to technical or scientific information.",
+      "interactive_conversational": "Designed for back-and-forth interaction.",
+      "educational_learning": "Aimed at teaching or explaining a concept.",
+      "trivia_quiz": "Used for playing games or testing knowledge."
+    },
+    "Prompts for image generation": {
+      "descriptive": "Vividly describe a scene, object, or concept for visualization.",
+      "abstract_artistic": "Used for generating art or abstract images.",
+      "mood_based": "Focus on creating an image that conveys a certain mood.",
+      "character_creature_design": "Specific to designing characters or creatures.",
+      "historical_period_specific": "Reflect a specific historical period or style.",
+      "conceptual": "Focus on a concept or theme."
+    },
+    "Hypothetical video creation prompts": {
+      "narrative": "Outline a short story or scenario for a video.",
+      "instructional_educational": "Used for creating how-to videos or educational content.",
+      "music_dance_video": "Focused on creating music or dance videos.",
+      "documentary_style": "Mimic the style of a documentary.",
+      "animation": "Specific to creating animated sequences or stories.",
+      "visual_essay_montage": "Compile visual elements to convey a message or theme."
+    },
+    "Related technologies prompts": {
+      "translation": "Convert text or speech from one language to another.",
+      "transcription": "Convert spoken words into written text.",
+      "text_to_speech": "Convert written text into spoken words.",
+      "speech_to_text": "Convert spoken language into text."
+    }
+  }
