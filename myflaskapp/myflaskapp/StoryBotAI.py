@@ -8,6 +8,7 @@ import os
 import json
 import re
 import requests
+
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -45,7 +46,7 @@ class StoryBotAI:
         self.client_story_teller = OpenAI(api_key=self.api_key_story_teller)
         self.client_dalle = OpenAI(api_key=self.api_key_dalle)
 
-    def get_chatgpt_actor_one(self, system_prompt, prompt):
+    def get_chatgpt_actor_one(self, system_prompt_actor_one, prompt_actor_one):
         """
         Get a response from ChatGPT for the first actor based on the provided prompt.
 
@@ -59,8 +60,8 @@ class StoryBotAI:
         try:
             response = self.client_actor_one.chat.completions.create(
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt}
+                    {"role": "system", "content": system_prompt_actor_one},
+                    {"role": "user", "content": prompt_actor_one}
                 ],
                 model=self.model
             )
@@ -69,7 +70,7 @@ class StoryBotAI:
             print(f"Error in getting response from ChatGPT: {e}")
             return None
 
-    def get_chatgpt_actor_two(self, system_prompt, prompt):
+    def get_chatgpt_actor_two(self, system_prompt_actor_two, prompt_actor_two):
         """
         Get a response from ChatGPT for the second actor based on the provided prompt.
 
@@ -83,8 +84,8 @@ class StoryBotAI:
         try:
             response = self.client_actor_two.chat.completions.create(
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt}
+                    {"role": "system", "content": system_prompt_actor_two},
+                    {"role": "user", "content": prompt_actor_two}
                 ],
                 model=self.model
             )
@@ -93,7 +94,7 @@ class StoryBotAI:
             print(f"Error in getting response from ChatGPT: {e}")
             return None
 
-    def get_chatgpt_story_teller(self, system_prompt, prompt):
+    def get_chatgpt_story_teller(self, system_prompt_story_teller, prompt_story_teller):
         """
         Get a response from ChatGPT for story-telling based on the provided prompt.
 
@@ -107,8 +108,8 @@ class StoryBotAI:
         try:
             response = self.client_story_teller.chat.completions.create(
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt}
+                    {"role": "system", "content": system_prompt_story_teller},
+                    {"role": "user", "content": prompt_story_teller}
                 ],
                 model=self.model
             )
@@ -117,7 +118,7 @@ class StoryBotAI:
             print(f"Error in getting response from ChatGPT: {e}")
             return None
     
-    def get_chatgpt_story_teller_continuation(self, prompt):
+    def get_chatgpt_story_teller_continuation(self, prompt_story_teller_continuation):
         """
         Get a response from ChatGPT for story-telling based on the provided prompt.
 
@@ -130,7 +131,7 @@ class StoryBotAI:
         try:
             response = self.client_story_teller.chat.completions.create(
              messages=[
-                    {"role": "user", "content": prompt}
+                    {"role": "user", "content": prompt_story_teller_continuation}
                 ],
                 model=self.model
             )
@@ -139,7 +140,7 @@ class StoryBotAI:
             print(f"Error in getting response from ChatGPT: {e}")
             return None
     
-    def get_chatgpt_story_logic(self, system_prompt, prompt):
+    def get_chatgpt_story_logic(self, system_prompt_story_logic, prompt_story_logic):
         """
         Get a response from checking the LOGIC of the system.
 
@@ -153,8 +154,8 @@ class StoryBotAI:
         try:
             response = self.client_story_teller.chat.completions.create(
                 messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": prompt}
+                    {"role": "system", "content": system_prompt_story_logic},
+                    {"role": "user", "content": prompt_story_logic}
                 ],
                 model=self.model
             )
@@ -175,12 +176,20 @@ class StoryBotAI:
         """
         try:
             response = self.client_dalle.images.generate(
+                model="dalle-e-3",
                 prompt=dalle_image_prompt,
                 n=1,
-                size="256x256"
+                size="256x256",
+                quality="standard"                
             )
             return response.data[0].url
         except Exception as e:
             print(f"Error in creating image with DALL-E: {e}")
             return None
-        
+ 
+bot = StoryBotAI()
+dalle_image_prompt = "Create a photorealistic image that captures [specific subject or scene] in stunning detail. The setting should be [describe the setting - indoor, outdoor, urban, natural, etc.]. There should be a strong emphasis on [mention specific elements like lighting, mood, time of day, weather conditions, etc.]. The color palette should be [describe the color scheme - vibrant, muted, monochromatic, etc.]. The composition should focus on [specify what should be the focal point - a person, an object, a landscape feature, etc.], demonstrating [any specific style or effect - like depth of field, motion blur, etc.]. The overall atmosphere should convey [describe the desired mood or emotion]."
+
+print(bot.create_dalle_image(dalle_image_prompt))
+
+
